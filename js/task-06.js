@@ -2,12 +2,15 @@ const input = document.querySelector("#validation-input");
 
 const checkInput = () => {
 	if (input.value.length === +input.dataset.length) {
-		input.classList.remove("invalid");
-		input.classList.add("valid");
+		switchClass(input, "valid", "invalid");
 	} else {
-		input.classList.remove("valid");
-		input.classList.add("invalid");
+		switchClass(input, "invalid", "valid");
 	}
+};
+
+const switchClass = function (objLink, classAdd, classRemove) {
+	objLink.classList.remove(classRemove);
+	objLink.classList.add(classAdd);
 };
 
 input.addEventListener("blur", checkInput);
